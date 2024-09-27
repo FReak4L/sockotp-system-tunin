@@ -1,16 +1,30 @@
-CC=gcc
-CFLAGS=-Wall -Wextra -O2
-SRC_DIR=src
+# Compiler settings
+CC := gcc
+CFLAGS := -Wall -Wextra -O2
 
-all: $(SRC_DIR)/tcp_connect_time $(SRC_DIR)/optimize_tcp_params
+# Directories
+SRC_DIR := src
+BIN_DIR := $(SRC_DIR)
 
-$(SRC_DIR)/tcp_connect_time: $(SRC_DIR)/tcp_connect_time.c
-	$(CC) $(CFLAGS) -o $@ $<
+# Source files and targets
+SOURCES := $(wildcard $(SRC_DIR)/*.c)
+TARGETS := $(patsubst $(SRC_DIR)/%.c,$(BIN_DIR)/%,$(SOURCES))
 
-$(SRC_DIR)/optimize_tcp_params: $(SRC_DIR)/optimize_tcp_params.c
-	$(CC) $(CFLAGS) -o $@ $<
-
-clean:
-	rm -f $(SRC_DIR)/tcp_connect_time $(SRC_DIR)/optimize_tcp_params
-
+# Phony targets
 .PHONY: all clean
+
+# Default target
+all: $(TARGETS)
+
+# Compile rule
+$(BIN_DIR)/%: $(SRC_DIR)/%.c
+	@mkdir -p $(BIN_DIR)
+	$(CC) $(CFLAGS) $< -o $@
+
+# Clean rule
+clean:
+	rm -f $(TARGETS)
+
+# Print variables for debugging
+print-%:
+	@echo '$*=$($*)'
