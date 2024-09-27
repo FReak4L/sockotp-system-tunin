@@ -1,23 +1,42 @@
 name: C/C++ CI
-on:  
-  push:  
+
+on:
+  push:
     branches: [ "main" ]
   pull_request:
-      branches: [ "main" ]
-    
-jobs:  
+    branches: [ "main" ]
+
+jobs:
   build:
     runs-on: ubuntu-latest
-    
+
     steps:
-     - uses: actions/checkout@v4
-     - name: Install dependencies
-       run: |
-          sudo apt-get update
-          sudo apt-get install -y iperf3 iproute2 jq
-     - name: make
-       run: make
-     - name: Run tests
-       run: |
-          sudo ./src/tcp_connect_time localhost 80 || true
-          sudo ./src/optimize_tcp_params localhost 80 || true
+    - name: Checkout repository
+      uses: actions/checkout@v4
+
+    - name: Install dependencies
+      run: |
+        sudo apt-get update
+        sudo apt-get install -y iperf3 iproute2 jq
+
+    - name: Display project structure
+      run: |
+        echo "Project structure:"
+        ls -R
+
+    - name: Display Makefile content
+      run: cat Makefile
+
+    - name: Compile project
+      run: make
+
+    - name: List compiled files
+      run: ls -l src/
+
+    - name: Run tests
+      run: |
+        sudo ./src/tcp_connect_time localhost 80 || echo "tcp_connect_time test failed"
+        sudo ./src/optimize_tcp_params localhost 80 || echo "optimize_tcp_params test failed"
+
+    - name: Clean up
+      run: make clean
