@@ -1,7 +1,7 @@
 #!/bin/bash
 
-source /src/config.sh
-source /src/network_tests.sh
+source ./config.sh
+source ./network_tests.sh
 
 optimize_network() {
     local best_score=0 best_combo=""
