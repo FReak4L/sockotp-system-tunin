@@ -3,18 +3,11 @@
 DESTINATIONS=(
     "8.8.8.8"
     "1.1.1.1"
-    "cdn.jsdelivr.net"
-    "www.netflix.com"
-    "www.youtube.com"
     "www.github.com"
-    "www.dropbox.com"
 )
 
 IPERF_SERVERS=(
-    "iperf.he.net"
-    "speedtest.wtnet.de"
-    "iperf.biznetnetworks.com"
-    "iperf.scottlinux.com"
+    "gra.proof.ovh.net"
 )
 
 CONGESTION_CONTROLS=("cubic" "bbr" "reno")
