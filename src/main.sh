@@ -1,9 +1,12 @@
 #!/bin/bash
 
-source /src/config.sh
-source /src/network_tests.sh
-source /src/optimization.sh
-source /src/apply_settings.sh
+#Dir
+cd "$(dirname "$0")"
+
+source ./config.sh
+source ./network_tests.sh
+source ./optimization.sh
+source ./apply_settings.sh
 
 check_dependencies() {
     command -v iperf3 >/dev/null 2>&1 || { echo >&2 "iperf3 is required but not installed. Aborting."; exit 1; }
