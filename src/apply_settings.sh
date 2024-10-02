@@ -1,6 +1,6 @@
 #!/bin/bash
 
-source /src/config.sh
+source ./config.sh
 
 apply_best_settings() {
     read -r _ cc qdisc tc rtt loss jitter throughput syn_time <<< "$1"
