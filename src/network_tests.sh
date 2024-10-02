@@ -1,6 +1,6 @@
 #!/bin/bash
 
-source /src/config.sh
+source ./config.sh
 
 perform_network_tests() {
     local dest=$1 cc=$2 qdisc=$3 tc_setting=$4
