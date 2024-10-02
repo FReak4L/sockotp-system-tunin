@@ -2,22 +2,20 @@
 
 DESTINATIONS=(
     "8.8.8.8"
-    "1.1.1.1"
-    "www.github.com"
 )
 
 IPERF_SERVERS=(
     "gra.proof.ovh.net"
 )
 
-CONGESTION_CONTROLS=("cubic" "bbr" "reno")
-QUEUEING_DISCIPLINES=("fq" "fq_codel" "cake" "pfifo_fast")
-TC_SETTINGS=("none" "delay 50ms" "loss 1%" "rate 100mbit")
+CONGESTION_CONTROLS=("cubic" "bbr")
+QUEUEING_DISCIPLINES=( "fq_codel" "cake" "pfifo_fast")
+TC_SETTINGS=("none" "delay 50ms" "loss 1%")
 
 # Test variables
-TEST_ITERATIONS=5
-TEST_DURATION=10
-PING_COUNT=100
+TEST_ITERATIONS=3
+TEST_DURATION=5
+PING_COUNT=30
 
 # Colors
 RED='\033[0;31m'
