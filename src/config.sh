@@ -1,7 +1,7 @@
 #!/bin/bash
 
 DESTINATIONS=(
-    "8.8.8.8"
+    "www.github.com"
 )
 
 IPERF_SERVERS=(
@@ -9,8 +9,8 @@ IPERF_SERVERS=(
 )
 
 CONGESTION_CONTROLS=("cubic" "bbr")
-QUEUEING_DISCIPLINES=( "fq_codel" "cake" "pfifo_fast")
-TC_SETTINGS=("none" "delay 50ms" "loss 1%")
+QUEUEING_DISCIPLINES=("fq_codel" "cake")
+TC_SETTINGS=("none" "loss 1%")
 
 # Test variables
 TEST_ITERATIONS=3
